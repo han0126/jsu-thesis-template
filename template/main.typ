@@ -1,5 +1,5 @@
-#import "../template.typ": *
-#import "../template.typ": template as jsu-thesis
+#import "@preview/jsu-thesis-template:0.1.0": *
+#import "@preview/jsu-thesis-template:0.1.0": template as jsu-thesis
 
 #show: jsu-thesis.with(
   zh_title: "中文论文题目",
