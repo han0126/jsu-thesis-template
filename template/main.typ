@@ -1,5 +1,5 @@
-#import "@preview/jsu-thesis-template:0.1.0": *
-#import "@preview/jsu-thesis-template:0.1.0": template as jsu-thesis
+#import "../template.typ": *
+#import "../template.typ": template as jsu-thesis
 
 #show: jsu-thesis.with(
   zh_title: "中文论文题目",
@@ -23,6 +23,8 @@
   year: [20XX],
   month: [X],
 )
+
+#heading(numbering: none)[引言]
 
 = 绪论
 
@@ -72,16 +74,14 @@
 
 在此撰写结论。
 
-= 参考文献
-
 #heading(numbering: none)[参考文献]
 
 #bibliography("refs.bib", style: "gb-7714-2015-numeric", title: none)
 
-= 致谢
+#heading(numbering: none)[致谢]
 
 在此撰写致谢。
 
-= 附录
+#heading(numbering: none)[附录]
 
 附录（可选）主要包括一些不宜放在正文中的支撑材料。

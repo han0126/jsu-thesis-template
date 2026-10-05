@@ -166,7 +166,7 @@
   show heading.where(level: 1):it=>{ //单独设置一级标题
     pagebreak()
     set align(center)
-    set text(font: 字体.黑体, size: 字号.小二)
+    set text(font: 字体.黑体, size: 字号.小二, weight: "regular")
     v(1em)
     [#it]
     v(1em)
@@ -217,7 +217,7 @@
 
       pagebreak()
       set align(center)
-      set text(font: 字体.黑体, size: 字号.小二)
+      set text(font: 字体.黑体, size: 字号.小二, weight: "regular")
       v(2em)
       [#body-text]
       v(0.75em)
@@ -227,7 +227,7 @@
 
       pagebreak()
       set align(center)
-      set text(font: 字体.黑体, size: 字号.小二)
+      set text(font: 字体.黑体, size: 字号.小二, weight: "regular")
       v(2em)
       [#body-text]
       v(0.75em)
@@ -237,7 +237,7 @@
 
       pagebreak()
       set align(center)
-      set text(font: 字体.黑体, size: 字号.小二)
+      set text(font: 字体.黑体, size: 字号.小二, weight: "regular")
       v(2em)
       [#body-text]
       v(0.75em)

@@ -2,18 +2,6 @@
 
 江苏大学本科毕业设计（论文）Typst 模板 | Typst Template for Jiangsu University Undergraduate Thesis
 
-## 一分钟快速体验
-
-三行命令，立即生成一份完整的示例学位论文 PDF：
-
-```bash
-typst init @preview/jsu-thesis-template:0.1.0 my-thesis
-cd my-thesis
-typst compile main.typ
-```
-
-打开 `main.pdf`，即可看到一份包含封面、原创性声明、中英文摘要、目录、正文、参考文献、致谢、附录等全部要素的完整示例论文。这份示例论文同时也是一份用户指南，按论文格式排版，边看边用。之后只需把 `main.typ` 中的示例信息替换成你自己的内容即可开始写作。
-
 ## 功能特性
 
 - 封面（校徽 + 校名标 + 中英文题目 + 学院 / 班级 / 姓名 / 学号 / 指导教师 / 职称 / 年月）
@@ -28,7 +16,6 @@ typst compile main.typ
 - 公式、代码块（Consolas）
 - GB/T 7714-2015 参考文献（numeric 样式）
 - 致谢、附录
-- 全自动字号系统（初号 ~ 小七，中文习惯字号）
 - 随包分发字体，跨平台排版一致
 
 ## 获取模板
@@ -84,26 +71,12 @@ jsu-thesis-template/
     └── figures/        # 插图目录
 ```
 
-对应 `typst.toml` 的声明：
-
-```toml
-[package]
-entrypoint = "template.typ"    # 包入口：用户 #import 时加载的文件
-
-[template]
-path = "template"              # 该目录内文件会被复制到用户的新项目
-entrypoint = "main.typ"        # 用户项目的编译入口
-thumbnail = "thumbnail.png"
-```
-
-> 这种分离带来的好处：包逻辑与资源随 `@preview` 分发，用户项目保持干净；`typst init` 只复制 `template/` 这一个目录。
-
-## 配置说明
+## 使用说明
 
 在 `main.typ` 中通过 `jsu-thesis` 函数配置论文信息，各参数以命名参数传入：
 
 ```typst
-#import "@preview/jsu-thesis-template:0.1.0": *
+#import "@preview/jsu-thesis-template:0.1.0": *		// 导入样式
 #import "@preview/jsu-thesis-template:0.1.0": template as jsu-thesis
 
 #show: jsu-thesis.with(
@@ -124,8 +97,6 @@ thumbnail = "thumbnail.png"
   year: [20XX],
   month: [X],
 )
-
-= 绪论
 ```
 
 | 参数 | 类型 | 说明 | 默认值 |
@@ -158,6 +129,14 @@ thumbnail = "thumbnail.png"
 
 === 国内现状
 ```
+
+> 注意！
+>
+> **引言**、**参考文献**、**致谢**、**附录**四个部分由于涉及特殊格式，即没有数字标号，所以需要使用下述方式作为一级标题
+>
+> ```typst
+> #heading(numbering: none)[引言]
+> ```
 
 ### 插入图片
 
@@ -203,13 +182,12 @@ thumbnail = "thumbnail.png"
 编辑 `refs.bib` 后，在正文中引用：
 
 ```typst
-据研究显示#cite(<key>)……
+据研究显示#cite(<key>)
 ```
 
 文末的参考文献列表已配置 GB/T 7714-2015 numeric 样式：
 
 ```typst
-#heading(numbering: none)[参考文献]
 #bibliography("refs.bib", style: "gb-7714-2015-numeric", title: none)
 ```
 
@@ -355,7 +333,22 @@ Remove-Item -Recurse -Force .sim
 
 ## 致谢
 
-感谢 Typst 社区在中文排版方面的工作。本模板的页面设置、字号系统与标题样式参考了中文排版惯例与相关开源项目。
+感谢 Typst 社区在中文排版方面的工作。
+
+- `numbly`提供计数支持：[numbly](https://github.com/flaribbit/numbly)
+- `cuti`提供宋体类word描边加粗：[cuti](https://github.com/csimide/cuti)
+- `cumcm-muban`作为母版改进：[CUMCM-typst-template](https://github.com/a-kkiri/CUMCM-typst-template)
+
+## 支持项目
+
+如果这个模板对你有帮助，请：
+
+- 给项目[点个 Star](https://github.com/zh1-z/SJTU-Bachelor-Thesis-Midterm-Typst-Template)
+- 提交 Bug 报告和功能建议
+- Fork 并改进模板
+- 分享给更多需要的同学
+
+---
 
 ## 许可证（License）
 
