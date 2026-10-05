@@ -1,0 +1,9 @@
+.DS_Store
+thesis.pdf
+tests/**/*.pdf
+release/
+__pycache__/
+
+# 本地验证产物
+.sim/
+main.pdf
