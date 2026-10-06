@@ -2,6 +2,8 @@
 
 江苏大学本科毕业设计（论文）Typst 模板 | Typst Template for Jiangsu University Undergraduate Thesis
 
+:warning: **注意事项：该模板用于江苏大学本科毕业论文（非官方，只是按照学校给出的word模板复刻，存在不被认可的风险）。**
+
 ## 功能特性
 
 - 封面（校徽 + 校名标 + 中英文题目 + 学院 / 班级 / 姓名 / 学号 / 指导教师 / 职称 / 年月）
@@ -123,7 +125,7 @@ modern-jsu-thesis/
 === 国内现状
 ```
 
-> 注意！
+> :warning:注意事项
 >
 > **引言**、**参考文献**、**致谢**、**附录**四个部分由于涉及特殊格式，即没有数字标号，所以需要使用下述方式作为一级标题
 >
@@ -168,6 +170,12 @@ modern-jsu-thesis/
     max {F({t_1},{t_2})} = sum^3_(i=1) sum^5_(j=1) T(i,j) dot x_(i j)
   $
 )
+```
+
+:warning:**注意事项：如要使用`img`、`tbl`等图标、公式样式，需引用下述代码：**
+
+```typst
+#import "@preview/modern-jsu-thesis:0.1.0": *
 ```
 
 ### 参考文献

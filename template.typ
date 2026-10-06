@@ -167,9 +167,9 @@
     pagebreak()
     set align(center)
     set text(font: 字体.黑体, size: 字号.小二, weight: "regular")
-    v(1em)
+    v(1.5em)
     [#it]
-    v(1em)
+    v(0.5em)
   }
 
   show outline.entry.where(level: 1):it=>{
@@ -195,7 +195,7 @@
     set text(font: 字体.宋体, size: 字号.小四, weight: "bold")
     v(0.5em)
     setup-bold(it)
-    v(0.5em)
+    v(1em)
   }
 
   show outline.entry.where(level: 3):it=>{
@@ -210,6 +210,10 @@
   
   // 单独判定特殊格式标题
   show heading:it => {
+    if it.level != 1 {
+      return it
+    }
+    
     let body-text = it.body.text
 
     if body-text == "致谢"{
@@ -447,7 +451,6 @@
     #set text(font: 字体.黑体, size: 字号.三号)
     #v(4.5em)
     #align(center)[毕业设计（论文）原创性声明]
-    #set text(font: 字体.宋体, size: 字号.三号)
     #v(2em)
     #set text(font: 字体.宋体, size: 字号.四号)
     #par[

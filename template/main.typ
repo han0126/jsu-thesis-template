@@ -1,3 +1,14 @@
+/*
+
+该模板用于江苏大学本科毕业论文（非官方，只是按照学校给出的word模板复刻，存在不被认可的风险）。GitHub仓库：https://github.com/han0126/modern-jsu-thesis
+
+注意事项：
+如要使用img、tbl等图标、公式样式，需引用下述代码：
+`
+#import "@preview/modern-jsu-thesis:0.1.0": *
+`
+
+*/
 #import "@preview/modern-jsu-thesis:0.1.0": *
 #import "@preview/modern-jsu-thesis:0.1.0": template as jsu-thesis
 
@@ -30,7 +41,7 @@
 
 在此撰写绪论内容。
 
-= 正文
+= 正文（使用示例）
 
 == 这是二级标题
 
@@ -41,7 +52,7 @@
 == 插入图片
 
 #img(
-  image("figures/logo.png", width: 20%),
+  image("figures/logo.png", width: 40%),
   caption: [江苏大学logo],
 )
 
@@ -84,7 +95,7 @@
 
 #heading(numbering: none)[致谢]
 
-在此撰写致谢。
+在此撰写致谢（可选）。
 
 #heading(numbering: none)[附录]
 
