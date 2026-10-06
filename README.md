@@ -1,4 +1,4 @@
-# jsu-thesis-template
+# modern-jsu-thesis
 
 江苏大学本科毕业设计（论文）Typst 模板 | Typst Template for Jiangsu University Undergraduate Thesis
 
@@ -16,14 +16,13 @@
 - 公式、代码块（Consolas）
 - GB/T 7714-2015 参考文献（numeric 样式）
 - 致谢、附录
-- 随包分发字体，跨平台排版一致
 
 ## 获取模板
 
 ### 方式一：从 Typst Universe 创建（推荐）
 
 ```bash
-typst init @preview/jsu-thesis-template:0.1.0 my-thesis
+typst init @preview/modern-jsu-thesis:0.1.0 my-thesis
 cd my-thesis
 ```
 
@@ -41,8 +40,8 @@ my-thesis/
 ### 方式二：克隆 GitHub 仓库
 
 ```bash
-git clone https://github.com/han0126/jsu-thesis-template.git
-cd jsu-thesis-template
+git clone https://github.com/han0126/modern-jsu-thesis.git
+cd modern-jsu-thesis
 ```
 
 如果需要完整源代码对论文模板进行更多定制，可以选择克隆仓库。其中，控制论文格式的源代码是根目录下的 `template.typ`，随包分发的资源在 `fonts/` 和 `sources/`。
@@ -52,16 +51,10 @@ cd jsu-thesis-template
 本模板参照 Typst Universe 的通行做法，将**包入口**与**用户侧入口**分离：
 
 ```
-jsu-thesis-template/
+modern-jsu-thesis/
 ├── typst.toml          # 包清单
 ├── template.typ        # 包入口（模板核心逻辑，用户通过 @preview 导入）
 ├── thumbnail.png       # Typst Universe 缩略图
-├── fonts/              # 随包分发的中英文字体
-│   ├── Sim/
-│   │   ├── SimSun.ttf      # 宋体
-│   │   ├── SimHei.ttf      # 黑体
-│   │   └── SimKai.ttf      # 楷体
-│   └── TimesNewRoman/      # Times New Roman（常规 / 粗体 / 斜体 / 粗斜体）
 ├── sources/            # 封面图片（校徽、校名标）
 │   ├── logo.png
 │   └── jsu.png
@@ -76,8 +69,8 @@ jsu-thesis-template/
 在 `main.typ` 中通过 `jsu-thesis` 函数配置论文信息，各参数以命名参数传入：
 
 ```typst
-#import "@preview/jsu-thesis-template:0.1.0": *		// 导入样式
-#import "@preview/jsu-thesis-template:0.1.0": template as jsu-thesis
+#import "@preview/modern-jsu-thesistemplate:0.1.0": *		// 导入样式
+#import "@preview/modern-jsu-thesis:0.1.0": template as jsu-thesis
 
 #show: jsu-thesis.with(
   zh_title: "中文论文题目",
@@ -202,7 +195,7 @@ jsu-thesis-template/
 | 楷体 | `KaiTi` | `fonts/Sim/SimKai.ttf` |
 | 英文 / 数字 | `Times New Roman` | `fonts/TimesNewRoman/*.ttf` |
 
-**字体由包提供，从 `@preview` 创建的项目无需手动指定 `--font-path`。** 通过 `@preview` 导入时，Typst 会从包内解析字体资源。
+**字体从 `@preview` 创建的项目无需手动指定 `--font-path`。** 通过 `@preview` 导入时，Typst 会从包内解析字体资源。
 
 > 若克隆仓库后在本地直接编译 `template/main.typ`，则需要额外指定字体路径。
 
@@ -232,7 +225,7 @@ typst compile template/main.typ --font-path fonts
 
 ### 在 Typst Web App 中使用
 
-点击模板页面上的 **Create project in app** 按钮，即可在网页端创建项目。字体随包加载，网页端与本地排版一致。
+点击模板页面上的 **Create project in app** 按钮，即可在网页端创建项目。
 
 ## 常见问题
 
@@ -268,7 +261,7 @@ typst compile template/main.typ --font-path fonts
 
 如果这个模板对你有帮助，请：
 
-- 给项目[点个 Star](https://github.com/han0126/jsu-thesis-template)
+- 给项目[点个 Star](https://github.com/han0126/modern-jsu-thesis)
 - 提交 Bug 报告和功能建议
 - Fork 并改进模板
 - 分享给更多需要的同学
