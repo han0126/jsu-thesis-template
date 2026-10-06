@@ -44,7 +44,7 @@ git clone https://github.com/han0126/modern-jsu-thesis.git
 cd modern-jsu-thesis
 ```
 
-如果需要完整源代码对论文模板进行更多定制，可以选择克隆仓库。其中，控制论文格式的源代码是根目录下的 `template.typ`，随包分发的资源在 `fonts/` 和 `sources/`。
+如果需要完整源代码对论文模板进行更多定制，可以选择克隆仓库。其中，控制论文格式的源代码是根目录下的 `template.typ`，随包分发的资源在`sources/`。
 
 ## 仓库结构
 
