@@ -7,4 +7,4 @@ __pycache__/
 # 本地验证产物
 .sim/
 main.pdf
-.ps1
+*.ps1
