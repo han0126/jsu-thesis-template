@@ -193,7 +193,7 @@ jsu-thesis-template/
 
 ## 字体配置
 
-本模板随包分发了完整的中英文字体，族名如下：
+本模板所用到的字体族名如下：
 
 | 用途 | 字体族名 | 文件 |
 | --- | --- | --- |
@@ -204,37 +204,7 @@ jsu-thesis-template/
 
 **字体由包提供，从 `@preview` 创建的项目无需手动指定 `--font-path`。** 通过 `@preview` 导入时，Typst 会从包内解析字体资源。
 
-> 若克隆仓库后在本地直接编译 `template/main.typ`，则需要额外指定字体路径（见下一节）。
-
-### 本地开发时的字体路径
-
-从克隆的仓库直接编译时，需显式指定字体目录：
-
-```bash
-typst compile template/main.typ --font-path fonts
-```
-
-或使用环境变量：
-
-```bash
-# Windows PowerShell
-$env:TYPST_FONT_PATHS = "fonts"
-
-# macOS / Linux
-export TYPST_FONT_PATHS=fonts
-```
-
-### VS Code (Tinymist) 配置
-
-在 VS Code 的 `settings.json` 中添加：
-
-```json
-{
-  "tinymist.fontPaths": ["${workspaceFolder}/fonts"]
-}
-```
-
-否则编辑器内的预览会使用回退字体，与实际编译结果不一致。
+> 若克隆仓库后在本地直接编译 `template/main.typ`，则需要额外指定字体路径。
 
 ## 编译文档
 
@@ -264,52 +234,7 @@ typst compile template/main.typ --font-path fonts
 
 点击模板页面上的 **Create project in app** 按钮，即可在网页端创建项目。字体随包加载，网页端与本地排版一致。
 
-## 本地验证（发布前）
-
-仓库提供了 `verify.ps1`，可在**不上传**的前提下模拟完整的引用环境：
-
-```powershell
-powershell -ExecutionPolicy Bypass -File verify.ps1
-```
-
-脚本会依次完成：
-
-1. 检查 `typst` 可执行文件（默认路径见脚本 `param` 块，可用 `-TypstExe` 指定）
-2. 按「Universe 会收到的内容」构造模拟包（读取 `typst.toml` 的 `[package].exclude`，确保模拟包与真实发布包一致；并断言 `verify.ps1` 自身未被打入包内）
-3. 执行 `typst init` 创建用户项目
-4. **核对产物清单**（`init` 退出码为 0 不代表产物可用，必须检查 `main.typ` 是否存在）
-5. 将入口的 `@preview` 改写为 `@local`（仅模拟需要，仓库源码保持 `@preview`）
-6. 编译用户项目，并检查是否生成 PDF
-7. 以 `--ignore-system-fonts` 做纯净环境编译，要求**零字体警告**
-
-全部通过时脚本退出码为 `0` 并输出 `ALL PASSED`；任何一步失败会标出红色 `FAIL` 并返回非零退出码，便于接入 CI。
-
-> 脚本刻意写成纯 ASCII，以兼容 Windows PowerShell 5.1 的默认编码（GBK）。
-> 若脚本含中文，PS 5.1 会按 GBK 解析 UTF-8 文件而导致语法错误。
-
-验证产物位于 `.sim/`，清理：
-
-```powershell
-Remove-Item -Recurse -Force .sim
-```
-
-### 关于 `package not found (searched for @preview/jsu-thesis-template:0.1.0)`
-
-在模板**发布前**，于本仓库内直接编译 `template/main.typ` 会看到此报错 —— 这是**预期行为**，不是配置错误。
-
-`@preview` 是 Typst Universe 的官方发布命名空间，模板尚未提交 PR，registry 中自然不存在该包。请勿为了本地能编译而把入口改成 `@local`，那会导致发布后用户拿到无法使用的项目。
-
-正确的自检方式是使用 `verify.ps1`：它只在**模拟产物**中把 `@preview` 替换为 `@local`，仓库源码始终保持 `@preview`。
-
 ## 常见问题
-
-**Q：`typst init` 报错 `failed to create project directory (Io error)`？**
-
-通常是因为把包目录做成了**符号链接 / junction** 指回仓库自身。`init` 会递归复制 `[template].path` 目录，符号链接会形成自引用死循环。请改用实际拷贝（`robocopy` / `cp -r`）。
-
-**Q：`typst init` 显示成功，但生成的项目缺少 `main.typ`？**
-
-`init` 的退出码不可信。若 `[template].path` 指向的目录里没有 `entrypoint` 声明的文件，`init` 仍会报成功，但用户拿到的是不可用的项目。请用 `verify.ps1` 的第 4 步检查产物清单。
 
 **Q：编译时提示 `unknown font family: simsun` / `simhei` / `times new roman`？**
 
@@ -343,23 +268,17 @@ Remove-Item -Recurse -Force .sim
 
 如果这个模板对你有帮助，请：
 
-- 给项目[点个 Star](https://github.com/zh1-z/SJTU-Bachelor-Thesis-Midterm-Typst-Template)
+- 给项目[点个 Star](https://github.com/han0126/jsu-thesis-template)
 - 提交 Bug 报告和功能建议
 - Fork 并改进模板
 - 分享给更多需要的同学
-
----
 
 ## 许可证（License）
 
 本项目中的 Typst 模板源代码依据 MIT 许可证进行授权。
 
-本模板内置的字体文件（`fonts/` 目录下的 `SimSun.ttf`、`SimHei.ttf`、`SimKai.ttf`、`TimesNewRoman*.ttf`）版权归各自权利人所有，**不在 MIT 许可证授权范围内**。这些字体文件随模板一同分发仅用于学位论文排版的学术、非商业用途。使用者需自行确认其对字体的使用符合相关许可条款及适用法律法规。
-
-校徽（`sources/logo.png`）与校名标（`sources/jsu.png`）为江苏大学标识资源，其知识产权归江苏大学所有，同样不在 MIT 许可证授权范围内，仅限用于本校学位论文排版。
+模板内置的校徽（`sources/logo.png`）和校名字标（`sources/jsu.png`）为江苏大学标识资源，属于受商标权、著作权保护的资源文件，不在 MIT 许可证授权范围内，其知识产权归相关权利人所有。上述资源仅限用于学位论文排版的学术、非商业用途，除法律法规另有规定或已获得相关授权外，不得对上述资源进行再分发、修改或用于其他用途。使用者需自行确认其对资源的使用符合江苏大学的有关规定及适用法律法规。
 
 The Typst template source code is licensed under the MIT License.
 
-The font files bundled in the `fonts/` directory (`SimSun.ttf`, `SimHei.ttf`, `SimKai.ttf`, `TimesNewRoman*.ttf`) are copyrighted by their respective owners and are **excluded** from the MIT license. They are bundled solely for academic, non-commercial use in thesis formatting. Users are responsible for ensuring their use complies with the relevant license terms and applicable laws.
-
-The university emblem (`sources/logo.png`) and wordmark (`sources/jsu.png`) are identity assets of Jiangsu University, remain the property of Jiangsu University, and are likewise excluded from the MIT license. They may be used only for thesis formatting at this institution.
+The school logo (`sources/logo.png`) and school name (`sources/jsu.png`) built into the template are the logo resources of Jiangsu University, which are resource files protected by trademark rights and copyrights, and are not within the scope of MIT license authorization, and their intellectual property rights are owned by the relevant rights holders. The above resources are only used for academic and non-commercial purposes in typesetting dissertations, and shall not be redistributed, modified or used for other purposes unless otherwise stipulated by laws and regulations or authorized by relevant authorities. Users need to confirm that their use of resources conforms to the relevant regulations of Jiangsu University and applicable laws and regulations.
