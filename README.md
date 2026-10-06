@@ -69,7 +69,7 @@ modern-jsu-thesis/
 在 `main.typ` 中通过 `jsu-thesis` 函数配置论文信息，各参数以命名参数传入：
 
 ```typst
-#import "@preview/modern-jsu-thesistemplate:0.1.0": *		// 导入样式
+#import "@preview/modern-jsu-thesis:0.1.0": *		// 导入样式
 #import "@preview/modern-jsu-thesis:0.1.0": template as jsu-thesis
 
 #show: jsu-thesis.with(
@@ -188,12 +188,12 @@ modern-jsu-thesis/
 
 本模板所用到的字体族名如下：
 
-| 用途 | 字体族名 | 文件 |
-| --- | --- | --- |
-| 宋体 | `SimSun` | `fonts/Sim/SimSun.ttf` |
-| 黑体 | `SimHei` | `fonts/Sim/SimHei.ttf` |
-| 楷体 | `KaiTi` | `fonts/Sim/SimKai.ttf` |
-| 英文 / 数字 | `Times New Roman` | `fonts/TimesNewRoman/*.ttf` |
+| 用途 | 字体族名 |
+| :-: | :-: |
+| 宋体 | `SimSun` |
+| 黑体 | `SimHei` |
+| 楷体 | `KaiTi` |
+| 英文 / 数字 | `Times New Roman` |
 
 **字体从 `@preview` 创建的项目无需手动指定 `--font-path`。** 通过 `@preview` 导入时，Typst 会从包内解析字体资源。
 
