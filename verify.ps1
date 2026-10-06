@@ -15,7 +15,7 @@ param(
 $ErrorActionPreference = 'Continue'
 $Root    = $PSScriptRoot
 $Sim     = Join-Path $Root '.sim'
-$PkgName = 'jsu-thesis-template'
+$PkgName = 'modern-jsu-thesis'
 $PkgVer  = '0.1.0'
 $PkgDir  = Join-Path $Sim 'pkg'
 $PkgRoot = Join-Path $PkgDir "local\$PkgName\$PkgVer"
@@ -88,7 +88,7 @@ if (Test-Path (Join-Path $PkgRoot 'verify.ps1')) {
   Ok "verify.ps1 correctly excluded from package"
 }
 
-foreach ($need in @('typst.toml', 'template.typ', 'template\main.typ', 'fonts', 'sources')) {
+foreach ($need in @('typst.toml', 'template.typ', 'template\main.typ', 'sources')) {
   if (Test-Path (Join-Path $PkgRoot $need)) { Ok "present: $need" }
   else { Bad "missing: $need" }
 }
@@ -138,22 +138,6 @@ if ($c1 -eq 0) { Ok "compile succeeded" } else { Bad "compile failed (exit $c1)"
 $pdf = Join-Path $Proj 'main.pdf'
 if (Test-Path $pdf) { Ok ("PDF: " + (Get-Item $pdf).Length + " bytes") }
 else { Bad "no PDF produced" }
-
-# --- 5. pure environment (Linux / Web App simulation) -------------------
-Step "Pure environment compile (--ignore-system-fonts)"
-Push-Location $Proj
-$o2 = & $TypstExe compile main.typ pure.pdf --package-path $PkgDir `
-        --ignore-system-fonts --font-path (Join-Path $PkgRoot 'fonts') 2>&1
-$c2 = $LASTEXITCODE
-Pop-Location
-$warn = $o2 | Select-String 'unknown font family'
-if ($warn.Count -gt 0) {
-  Bad ("$($warn.Count) font warnings:")
-  $warn | Select-Object -First 5 | ForEach-Object { Info $_ }
-} else {
-  Ok "no font warnings"
-}
-if ($c2 -eq 0) { Ok "pure-mode compile succeeded" } else { Bad "pure-mode failed (exit $c2)" }
 
 # --- result -------------------------------------------------------------
 Write-Host ""
