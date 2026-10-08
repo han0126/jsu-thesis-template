@@ -156,8 +156,8 @@
   set heading(
     numbering: numbly(
       "{1:1  }",
-      "{1:1}. {2} ",
-      "{1:1}. {2:1}. {3:1} "
+      "{1:1}.{2} ",
+      "{1:1}.{2:1}.{3:1} "
     )
   )
 
@@ -167,9 +167,9 @@
     pagebreak()
     set align(center)
     set text(font: 字体.黑体, size: 字号.小二, weight: "regular")
-    v(1.5em)
+    v(1em)
     [#it]
-    v(0.5em)
+    v(1em)
   }
 
   show outline.entry.where(level: 1):it=>{
@@ -195,7 +195,7 @@
     set text(font: 字体.宋体, size: 字号.小四, weight: "bold")
     v(0.5em)
     setup-bold(it)
-    v(1em)
+    v(0.5em)
   }
 
   show outline.entry.where(level: 3):it=>{
@@ -332,10 +332,10 @@
     #set page(
       numbering: none,
       margin: (
-        top: 2.54cm,
-        bottom: 2.54cm,
-        left: 2.22cm,
-        right: 1.95cm)
+        top: 2.5cm,
+        bottom: 2cm,
+        left: 2.5cm,
+        right: 2cm)
     )
 
     // logo 显示
@@ -352,7 +352,7 @@
       table.cell()[
         #set text(font: "Times New Roman", size: 字号.小一)
         #underline(
-          stroke: 3pt,
+          stroke: 2.5pt,
           evade: true
         )[*J I A N G S U\u{3000}U N I V E R S I T Y*]
       ]
@@ -421,20 +421,21 @@
     )
     #set page(
       margin: (
-        top: 2.54cm,
-        bottom: 2.54cm,
-        left: 2.22cm,
-        right: 1.95cm
+        top: 2.5cm,
+        bottom: 2cm,
+        left: 2.5cm,
+        right: 2cm
       ),
       header: [
-        #table(
-          columns: (1fr),
-          align: center+bottom,
-          stroke: none,
-          [
-            #text(font: 字体.宋体, size: 字号.小五)[原创性声明#h(1fr)江苏大学本科毕业设计（论文）]
+        #grid(
+          columns: (1fr,1fr),
+          grid.cell(align: left+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[原创性声明]
           ],
-          table.hline(stroke: 0.7pt)
+          grid.cell(align: right+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[江苏大学本科毕业设计（论文）]
+          ],
+          grid.hline(stroke: 0.7pt)
         )
       ],
       header-ascent: 0.6cm,
@@ -459,7 +460,7 @@
     ]
     
     #set text(font: 字体.宋体, size: 字号.小四)
-    #v(5em)
+    #v(4.7em)
     
     #set text(font: 字体.宋体, size: 字号.四号)
     #table(
@@ -477,20 +478,21 @@
   [
     #set page(
       margin: (
-        top: 2.54cm,
-        bottom: 2.54cm,
-        left: 2.22cm,
-        right: 1.95cm
+        top: 2.5cm,
+        bottom: 2cm,
+        left: 2.5cm,
+        right: 2cm
       ),
       header: [
-        #table(
-          columns: (1fr),
-          align: center+bottom,
-          stroke: none,
-          [
-            #text(font: 字体.宋体, size: 字号.小五)[摘要#h(1fr)江苏大学本科毕业设计（论文）]
+        #grid(
+          columns: (1fr,1fr),
+          grid.cell(align: left+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[摘要]
           ],
-          table.hline(stroke: 0.7pt)
+          grid.cell(align: right+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[江苏大学本科毕业设计（论文）]
+          ],
+          grid.hline(stroke: 0.7pt)
         )
       ],
       header-ascent: 0.6cm,
@@ -505,7 +507,7 @@
     )
     #set par(
       justify: true, //两端对齐
-      leading: 1.4em, //行距
+      leading: 1.5em, //行距
     )
     #[//题目
       #v(2.2em)  
@@ -526,8 +528,8 @@
       )
     ]
     #[//摘要
-      #v(0.5em)
-      #text(font: 字体.黑体, size: 字号.四号)[摘要：]
+      #v(1em)
+      #text(font: 字体.黑体, size: 字号.四号)[#h(0.25em)摘要：]
       #zh-abstract
     ]
     #v(2.5em)
@@ -544,20 +546,21 @@
   [
     #set page(
       margin: (
-        top: 2.54cm,
-        bottom: 2.54cm,
-        left: 2.22cm,
-        right: 1.95cm
+        top: 2.5cm,
+        bottom: 2cm,
+        left: 2.5cm,
+        right: 2cm
       ),
       header: [
-        #table(
-          columns: (1fr),
-          align: center+bottom,
-          stroke: none,
-          [
-            #text(font: 字体.宋体, size: 字号.小五)[摘要#h(1fr)江苏大学本科毕业设计（论文）]
+        #grid(
+          columns: (1fr,1fr),
+          grid.cell(align: left+bottom)[
+            #text(font: "Times New Roman", size: 字号.小五, bottom-edge: -0.4em)[ABSTRACT]
           ],
-          table.hline(stroke: 0.7pt)
+          grid.cell(align: right+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[江苏大学本科毕业设计（论文）]
+          ],
+          grid.hline(stroke: 0.7pt)
         )
       ],
       header-ascent: 0.6cm,
@@ -572,7 +575,7 @@
     )
     #set par(
       justify: true, //两端对齐
-      leading: 1.4em, //行距
+      leading: 1.5em, //行距
       first-line-indent: (
         amount: 1em,
       ), //首段缩进
@@ -604,20 +607,21 @@
   [
     #set page(
       margin: (
-        top: 2.54cm,
-        bottom: 2.54cm,
-        left: 2.22cm,
-        right: 1.95cm
+        top: 2.5cm,
+        bottom: 2cm,
+        left: 2.5cm,
+        right: 2cm
       ),
       header: [
-        #table(
-          columns: (1fr),
-          align: center+bottom,
-          stroke: none,
-          [
-            #text(font: 字体.宋体, size: 字号.小五)[目录#h(1fr)江苏大学本科毕业设计（论文）]
+        #grid(
+          columns: (1fr,1fr),
+          grid.cell(align: left+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[目录]
           ],
-          table.hline(stroke: 0.7pt)
+          grid.cell(align: right+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[江苏大学本科毕业设计（论文）]
+          ],
+          grid.hline(stroke: 0.7pt)
         )
       ],
       header-ascent: 0.6cm,
@@ -632,7 +636,7 @@
     )
     #set par(
       justify: true, //两端对齐
-      leading: 1.4em, //行距
+      leading: 1.5em, //行距
     )
     
     #align(center)[
@@ -659,20 +663,19 @@
   [
     #set page(
       margin: (
-        top: 2.54cm,
-        bottom: 2.54cm,
-        left: 2.22cm,
-        right: 1.95cm
+        top: 2.5cm,
+        bottom: 2cm,
+        left: 2.5cm,
+        right: 2cm
       ),
       header: [
-        #table(
-          columns: (1fr),
-          align: center+bottom,
-          stroke: none,
-          [
-            #text(font: 字体.宋体, size: 字号.小五)[#h(1fr)江苏大学本科毕业设计（论文）]
+        #grid(
+          columns: (1fr,1fr),
+          grid.cell(align: left+bottom)[ ],
+          grid.cell(align: right+bottom)[
+            #text(font: 字体.宋体, size: 字号.小五, bottom-edge: -0.4em)[江苏大学本科毕业设计（论文）]
           ],
-          table.hline(stroke: 0.7pt)
+          grid.hline(stroke: 0.7pt)
         )
       ],
       header-ascent: 0.6cm,
@@ -687,7 +690,7 @@
     )
     #set par(
       justify: true, //两端对齐
-      leading: 1.5em, //行距
+      leading: 1.3em, //行距 等效word1.5倍行距
     )
     
     #set text(font: 字体.宋体, size: 字号.小四)
