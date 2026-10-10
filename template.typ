@@ -126,9 +126,21 @@
   number: [学号],
   instructor: [指导教师姓名],
   post: [职称],
-  year: [2026],
-  month: [10],
+  year: [20XX],
+  month: [X],
+
+  anonymity: false
 ) = {
+
+  if (anonymity == true){
+    college = "XX学院"
+    class = "XX班"
+    author = "张三"
+    number = "XXXX"
+    instructor = "XX"
+    post = "XX"
+  }
+
   //设置页面
   set page(
     paper: "a4",
@@ -202,11 +214,6 @@
     set text(font: 字体.宋体, size: 字号.小四)
     it
   }
-   
-  // show heading:it =>{
-  //   it
-  //   fake-par
-  // }
   
   // 单独判定特殊格式标题
   show heading:it => {

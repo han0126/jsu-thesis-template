@@ -1,16 +1,17 @@
 /*
 
-该模板用于江苏大学本科毕业论文（非官方，只是按照学校给出的word模板复刻，存在不被认可的风险）。GitHub仓库：https://github.com/han0126/modern-jsu-thesis
+该模板用于江苏大学本科毕业论文（非官方，存在不被认可的风险）。
+GitHub仓库：https://github.com/han0126/modern-jsu-thesis
 
 注意事项：
 如要使用img、tbl等图标、公式样式，需引用下述代码：
-`
-#import "@preview/modern-jsu-thesis:0.1.0": *
-`
+```
+#import "@preview/modern-jsu-thesis:0.1.1": *
+```
 
 */
-#import "@preview/modern-jsu-thesis:0.1.0": *
-#import "@preview/modern-jsu-thesis:0.1.0": template as jsu-thesis
+#import "@preview/modern-jsu-thesis:0.1.1": *
+#import "@preview/modern-jsu-thesis:0.1.1": template as jsu-thesis
 
 #show: jsu-thesis.with(
   zh-title: "中文论文题目",
@@ -25,26 +26,21 @@
     This is the English abstract.
   ],
 
-  college: [XX学院],   // 学院名称
-  class: [XX班],          // 班级
-  author: [XX],               // 姓名
-  number: [XXXX],             // 学号
-  instructor: [XX],           // 指导教师姓名
-  post: [XX],                 // 指导教师职称
+  college: [XX学院],            // 学院名称
+  class: [XX班],                // 班级
+  author: [XX],                 // 姓名
+  number: [XXXX],               // 学号
+  instructor: [XX],             // 指导教师姓名
+  post: [XX],                   // 指导教师职称
   year: [20XX],
   month: [X],
+
+  anonymity: false               // 盲审模式
 )
 
 #heading(numbering: none)[引言]
 
 = 绪论
-== 课题背景和意义
-=== 研究背景
-说明本课题的意义、目的、研究范围及要达到的技术要求；简述本课题在国内外的发展概况及存在的问题；说明本课题的指导思想；阐述本课题应解决的主要问题。
-=== 研究意义
-== 课题研究现状
-== 本文研究内容
-正文部分：章标题为
 
 = 正文（使用示例）
 
